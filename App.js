@@ -1,21 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
+import { useFonts } from 'expo-font';
+import { AppLoading } from 'expo';
+import { FontDisplay, loadAsync } from 'expo-font';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+
+import Router from './Router';
+
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  
+  let [fonstLoaded] = useFonts({
+    'Poppins': require('./assets/fonts/Poppins.ttf'),
+  });
+
+  if (!fonstLoaded){
+    return <AppLoading/>
+  }else{
+    return(
+      <Router/>
+    );
+  }
+
+  
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
