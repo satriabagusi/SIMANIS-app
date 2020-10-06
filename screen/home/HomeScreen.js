@@ -4,17 +4,34 @@ import { Image, ImageBackground, StyleSheet, Text, TouchableHighlight, Touchable
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
+import { responsiveHeight, responsiveWidth, responsiveFontSize, responsiveScreenWidth, responsiveScreenHeight } from 'react-native-responsive-dimensions';
+import { Avatar, Button, Modal, Portal } from 'react-native-paper';
+import styles from '../../assets/style/HomeComponent/Home';
 
 export default function App() {
   const navigation = useNavigation();
 
+  const [modalDataPokok, visibleDataPokok] = React.useState(false);
+  const showModalDataPokok = () => visibleDataPokok(true);
+  const hideModalDataPokok = () => visibleDataPokok(false);
+
+  const [modalElearning, visibleElearning] = React.useState(false);
+  const showModalElearning = () => visibleElearning(true);
+  const hideModalElearning = () => visibleElearning(false);
+
+  const [modalUjian, visibleUjian] = React.useState(false);
+  const showModalUjian = () => visibleUjian(true);
+  const hideModalUjian = () => visibleUjian(false);
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style={"light"}/>
-      <ImageBackground source={require('../../assets/fluid-bg.png')}
-      style={styles.fluid}>
+      <Image
+      source={require('../../assets/fluid-bg.png')}
+      style={styles.fluid}
+      />
 
+      <View style={styles.sectionTop}>
       <TouchableOpacity
         onPress={() => navigation.toggleDrawer()}
         style={styles.btnMenu}>
@@ -22,86 +39,76 @@ export default function App() {
       </TouchableOpacity>
 
       <View style={styles.profile}>
-        <View style={styles.avatar}>
-        <Image
-          source={{uri:'https://images.unsplash.com/photo-1600527097450-569db51cf00d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80'}}
-          style={{flex:1,width: 72, height:72, resizeMode: 'contain'}}
-        />
-        </View>
-        <Text style={{fontWeight:'bold', fontSize: 24, color:'white', marginBottom:5}}>John Doe</Text>
-        <Text style={{fontSize: 18, color:'white'}}>SMA 1 Indonesia</Text>
-        <Text style={{color:'white'}}>Admin Sekolah</Text>
+          <Avatar.Image size={responsiveScreenWidth(24)} 
+          source={{uri:'https://images.unsplash.com/photo-1600527097450-569db51cf00d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80'}} />
+        <Text style={{fontWeight:'bold', fontSize: responsiveFontSize(3), color:'white', marginBottom:5}}>John Doe</Text>
+        <Text style={{fontSize: responsiveFontSize(2), color:'white'}}>SMA 1 Indonesia</Text>
+        <Text style={{fontSize: responsiveFontSize(1.5) ,color:'white'}}>Admin Sekolah</Text>
+      </View>
       </View>
 
-      <TouchableOpacity style={styles.card}
-      onPress={() => alert("DATA POKOK SEKOLAh")}>
-          <Image source={require('../../assets/icons/PokokSekolahIcon.png')} style={{marginRight: responsiveWidth(3)}}/>
-          <Text style={styles.cardText}>Data Pokok Sekolah</Text>
-      </TouchableOpacity>
+      <View style={{flex:1, alignSelf:'center', width:responsiveScreenWidth(80), top:responsiveScreenHeight(-15), maxHeight:450}}>
 
-      </ImageBackground>
+        <TouchableOpacity style={styles.card}
+        onPress={showModalDataPokok} >
+            <Image source={require('../../assets/icons/PokokSekolahIcon.png')} style={{marginRight: responsiveWidth(3), width: responsiveScreenWidth(16.5), height: responsiveScreenHeight(6.5)}}/>
+            <Text style={styles.cardText}>Data Pokok Sekolah</Text>
+        </TouchableOpacity>
+
+        <View style={{flexDirection: 'row', marginVertical:responsiveScreenHeight(2)}}>
+          <TouchableOpacity style={styles.cardChild}
+          onPress={() => alert("JADWAL PELAJARAN")} >
+              <Image source={require('../../assets/icons/jadwalIcon.png')} style={{marginRight: responsiveWidth(3), width: responsiveScreenWidth(8.5), height: responsiveScreenHeight(5)}}/>
+              <Text >Jadwal Pelajaran</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.cardChild}
+          onPress={() => alert("Absensi Siswa")} >
+              <Image source={require('../../assets/icons/absensiIcon.png')} style={{marginRight: responsiveWidth(3.5), width: responsiveScreenWidth(9.8), height: responsiveScreenHeight(4)}}/>
+              <Text >Absensi Siswa</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.cardChild}
+          onPress={() => alert("Tugas Siswa")} >
+              <Image source={require('../../assets/icons/tugasIcon.png')} style={{marginRight: responsiveWidth(3), width: responsiveScreenWidth(6), height: responsiveScreenHeight(5)}}/>
+              <Text >Tugas Siswa</Text>
+          </TouchableOpacity>
+          
+        </View>
+
+        <TouchableOpacity style={styles.card}
+        onPress={showModalElearning} >
+            <Image source={require('../../assets/icons/elearningIcon.png')} style={{marginRight: responsiveWidth(3), width: responsiveScreenWidth(16.5), height: responsiveScreenHeight(6.5)}}/>
+            <Text style={styles.cardText}>E-Learning</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.card}
+        onPress={showModalUjian} >
+            <Image source={require('../../assets/icons/ujianIcon.png')} style={{marginRight: responsiveWidth(3), width: responsiveScreenWidth(16.5), height: responsiveScreenHeight(6.5)}}/>
+            <Text style={styles.cardText}>Ujian Online</Text>
+        </TouchableOpacity>
+
+      </View>
+
 
       
-    <View style={styles.content}>
-      <Text>Home</Text>
-    </View>
+
+    <Portal>
+    <Modal  visible={modalDataPokok} onDismiss={hideModalDataPokok}>
+          <View style={styles.modal}>
+            <Text>This is Modal DATA POKOK</Text>
+          </View>
+    </Modal>
+    <Modal  visible={modalElearning} onDismiss={hideModalElearning}>
+          <View style={styles.modal}>
+            <Text>This is Modal E-learning</Text>
+          </View>
+    </Modal>
+    <Modal  visible={modalUjian} onDismiss={hideModalUjian}>
+          <View style={styles.modal}>
+            <Text>This is Modal Ujian Online</Text>
+          </View>
+    </Modal>
+    </Portal>
     </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  fluid:{
-    flex:1,
-    justifyContent: "center",
-    top: responsiveHeight(-5)
-  },
-  btnMenu:{
-    flex:1,
-    marginVertical: responsiveHeight(7),
-    marginHorizontal: responsiveWidth(6.5),
-    zIndex:21
-  },
-  profile:{
-    flex:1,
-    justifyContent: 'center',
-    alignItems:'center',
-    flexDirection: 'column',
-    marginTop: responsiveHeight(-15),
-    marginBottom: responsiveHeight(7),
-  },
-  avatar:{
-    borderRadius:50
-  },  
-  card:{
-    flex:1,
-    flexDirection: 'row',
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor:"#FFF",
-    width: responsiveWidth(70),
-    height: responsiveHeight(15),
-    marginHorizontal: responsiveWidth(15),
-    borderRadius: 10,
-    shadowColor: "black",
-    shadowOffset: {
-      width: 3,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
-  },
-  cardText:{
-    fontFamily: 'Poppins',
-    fontWeight: "bold"
-  },
-  content:{
-    flex: 1,
-    // backgroundColor: '',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

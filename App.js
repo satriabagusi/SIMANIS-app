@@ -4,6 +4,7 @@ import { FontDisplay, loadAsync } from 'expo-font';
 import React from 'react';
 
 import Router from './Router';
+import { Provider as PaperProvider } from 'react-native-paper';
 
 
 export default function App() {
@@ -16,7 +17,9 @@ export default function App() {
     return <AppLoading/>
   }else{
     return(
-      <Router/>
+      <PaperProvider>
+        <Router/>
+      </PaperProvider>
     );
   }
 
