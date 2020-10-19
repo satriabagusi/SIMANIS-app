@@ -22,13 +22,11 @@ export default styles = StyleSheet.create({
       marginLeft: responsiveWidth(5.5),
     },
     profile:{
-      justifyContent: 'center',
-      alignSelf:'center',
       alignContent:'center',
       alignItems:'center',
       flexDirection: 'column',
       right: responsiveScreenWidth(35),
-      top: responsiveScreenHeight(-6)
+      top: responsiveScreenHeight(4)
     },
     card:{
       flex:1,
@@ -52,8 +50,7 @@ export default styles = StyleSheet.create({
       elevation: 3,
     },
     cardText:{
-      fontFamily: 'Poppins',
-      fontWeight: "bold"
+      fontFamily: 'Poppins_700Bold',
     },
     cardChild:{
       flex:1,
