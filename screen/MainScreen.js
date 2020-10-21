@@ -6,10 +6,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 // import { Button } from 'react-native-paper';
 
-export default function MainScreen({}) {
-  const navigation = useNavigation();
 
-  return (
+export default function MainScreen({navigation}){
+  return(
     <SafeAreaView >
       <StatusBar style={"light"}/>
       {/* <Image
@@ -20,15 +19,11 @@ export default function MainScreen({}) {
 
     <View style={{justifyContent: 'center'}}>
     <Text>Main Screen</Text>
-    <Button onPress={navigation.navigate('Login')}
-    title="Go To Login">
-    </Button>
-    <Button onPress={navigation.navigate('Register')}
-    title="Go To Register">
-    </Button>
     </View>
 
-    </SafeAreaView>
-  );
-}
+      <Button
+      title="Login" onPress={() => navigation.navigate('LoginScreen')} />
 
+    </SafeAreaView>
+  )
+}

@@ -28,8 +28,8 @@ export function DrawerContent(props){
                     <View style={styles.userInfoBtn}>
                         <TouchableOpacity style={styles.profilBtn}
                         onPress={() => alert('profil pengguna')}>
-                            <Ionicons name="ios-person" size={responsiveScreenWidth(6)} color="#51abff"/>
-                            <Text style={{color: '#51abff', textAlign:'center', marginLeft:responsiveScreenWidth(2)}}>Profil Pengguna</Text>
+                            <Ionicons name="ios-person" size={responsiveScreenWidth(6)} color="#3F83F8"/>
+                            <Text style={{color: '#3F83F8', textAlign:'center', marginLeft:responsiveScreenWidth(2)}}>Profil Pengguna</Text>
                         </TouchableOpacity>
                     </View>
             </View>
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
         paddingLeft: responsiveScreenWidth(4),
         paddingTop: responsiveHeight(6),
         paddingBottom:  responsiveHeight(3),
-        backgroundColor: '#51ABFF',
+        backgroundColor: '#3F83F8',
         shadowColor: "black",
         shadowOffset: {
             width: 3,

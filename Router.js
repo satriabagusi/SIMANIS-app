@@ -1,23 +1,120 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Provider as PaperProvider } from 'react-native-paper';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { DrawerContent } from './screen/DrawerContent';
 
+import DataSekolah from './screen/datapokok/datasekolah/DataSekolah';
+import TambahDataSekolah from './screen/datapokok/datasekolah/TambahDataSekolah';
+import ListJenjangSekolah from './screen/datapokok/datasekolah/ListJenjangSekolah';
+import DetailDataSekolah from './screen/datapokok/datasekolah/DetailDataSekolah';
+
+import DataPrasarana from './screen/datapokok/dataprasarana/DataPrasarana';
+import TambahDataPrasarana from './screen/datapokok/dataprasarana/TambahDataPrasarana';
+
+import DataSarana from './screen/datapokok/datasarana/DataSarana';
+import TambahDataSarana from './screen/datapokok/datasarana/TambahDataSarana';
+
+import DataRombel from './screen/datapokok/datarombel/DataRombel';
+import TambahDataRombel from './screen/datapokok/datarombel/TambahDataRombel';
+
+import DataGuru from './screen/datapokok/dataguru/DataGuru';
+
+import DataSiswa from './screen/datapokok/datasiswa/DataSiswa';
+import TambahDataSiswa from './screen/datapokok/datasiswa/TambahDataSiswa';
+
 import LoginScreen from './screen/login/LoginScreen';
 import RegisterScreen from './screen/register/RegisterScreen';
 import MainScreen from './screen/MainScreen';
-
 import HomeScreen from './screen/home/HomeScreen';
+
+const DataSekolahStack = createStackNavigator();
+function DataSekolahStackScreen(){
+  return(
+    <DataSekolahStack.Navigator
+      initialRouteName="DataSekolah"
+      screenOptions={{headerShown:false}}>
+      <DataSekolahStack.Screen name="DataSekolah" component={DataSekolah} />
+      <DataSekolahStack.Screen name="TambahDataSekolah" component={TambahDataSekolah} />
+      <DataSekolahStack.Screen name="ListJenjangSekolah" component={ListJenjangSekolah} />
+      <DataSekolahStack.Screen name="DetailDataSekolah" component={DetailDataSekolah} />
+    </DataSekolahStack.Navigator>
+  );
+}
+
+const DataPrasaranaStack = createStackNavigator();
+function DataPrasaranaStackScreen(){
+  return(
+    <DataPrasaranaStack.Navigator
+    initialRouteName="DataPrasarana"
+    screenOptions={{headerShown:false}}>
+      <DataPrasaranaStack.Screen name="DataPrasarana" component={DataPrasarana}/>
+      <DataPrasaranaStack.Screen name="TambahDataPrasarana" component={TambahDataPrasarana}/>
+    </DataPrasaranaStack.Navigator>
+  );
+}
+
+const DataSaranaStack = createStackNavigator();
+function DataSaranaStackScreen(){
+  return(
+    <DataSaranaStack.Navigator
+    initialRouteName="DataSarana"
+    screenOptions={{headerShown:false}}>
+      <DataSaranaStack.Screen name="DataSarana" component={DataSarana}/>
+      <DataSaranaStack.Screen name="TambahDataSarana" component={TambahDataSarana}/>
+    </DataSaranaStack.Navigator>
+  );
+}
+
+const DataRombelStack = createStackNavigator();
+function DataRombelStackScreen(){
+  return(
+    <DataRombelStack.Navigator
+    initialRouteName="DataRombel"
+    screenOptions={{headerShown:false}}>
+      <DataRombelStack.Screen name="DataRombel" component={DataRombel}/>
+      <DataRombelStack.Screen name="TambahDataRombel" component={TambahDataRombel}/>
+    </DataRombelStack.Navigator>
+  );
+}
+
+const DataSiswaStack = createStackNavigator();
+function DataSiswaStackScreen(){
+  return(
+    <DataSiswaStack.Navigator
+    initialRouteName="DataSiswa"
+    screenOptions={{headerShown:false}}>
+      <DataSiswaStack.Screen name="DataSiswa" component={DataSiswa}/>
+      <DataSiswaStack.Screen name="TambahDataSiswa" component={TambahDataSiswa}/>
+    </DataSiswaStack.Navigator>
+  );
+}
+
+const DataStack = createStackNavigator();
+function DataStackScreen(){
+  return(
+      <DataStack.Navigator 
+      screenOptions={{headerShown:false}}>
+        <DataStack.Screen name="DataSekolahStack" component={DataSekolahStackScreen} />
+        <DataStack.Screen name="DataPrasarana" component={DataPrasaranaStackScreen} />
+        <DataStack.Screen name="DataSarana" component={DataSaranaStackScreen} />
+        <DataStack.Screen name="DataRombel" component={DataRombelStackScreen} />
+        <DataStack.Screen name="DataGuru" component={DataGuru} />
+        <DataStack.Screen name="DataSiswa" component={DataSiswaStackScreen} />
+      </DataStack.Navigator>
+  );
+}
+
 const Drawer = createDrawerNavigator();
 function HomeStackScreen(){
   return(
     <Drawer.Navigator 
       drawerContent={props => <DrawerContent {...props} />}
-      initialRouteName="HomeScreen">
-        <Drawer.Screen name="HomeScreen" component={HomeScreen}/>
+      initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeScreen}/>
+        <Drawer.Screen name="DataPokok" component={DataStackScreen} />
     </Drawer.Navigator>
   );
 }
@@ -37,17 +134,19 @@ function MainStackScreen(){
 }
 
 const RootStack = createStackNavigator();
-export default function App() {
-  return (
+const Router = () => {
+  return(
     <NavigationContainer>
-        <RootStack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}>
-          <RootStack.Screen name="Main" component={MainStackScreen}/>
-          <RootStack.Screen name="Home" component={HomeStackScreen}/>
-        </RootStack.Navigator>
+      <RootStack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerShown: false,
+      }}>
+        <RootStack.Screen name="Main" component={MainStackScreen}/>
+        <RootStack.Screen name="Home" component={HomeStackScreen}/>
+      </RootStack.Navigator>  
     </NavigationContainer>
-  );
+  )
 }
 
+export default Router;

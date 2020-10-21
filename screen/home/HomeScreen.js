@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { responsiveFontSize, responsiveScreenWidth, responsiveScreenHeight, responsiveScreenFontSize } from 'react-native-responsive-dimensions';
-import { Avatar, List, Modal, Portal, Surface } from 'react-native-paper';
+import { Avatar, Dialog, Divider, List, Modal, Portal, Surface, Title } from 'react-native-paper';
 import styles from '../../assets/style/HomeComponent/Home';
 
 export default function HomeScreen() {
@@ -22,6 +22,31 @@ export default function HomeScreen() {
   const [modalUjian, visibleUjian] = React.useState(false);
   const showModalUjian = () => visibleUjian(true);
   const hideModalUjian = () => visibleUjian(false);
+
+  function navigateDataSekolah(){
+    navigation.navigate('DataPokok', {screen: 'DataSekolah'});
+    hideModalDataPokok();
+  }
+  function navigateDataPrasarana(){
+    navigation.navigate('DataPokok', {screen: 'DataPrasarana'});
+    hideModalDataPokok();
+  }
+  function navigateDataSarana(){
+    navigation.navigate('DataPokok', {screen: 'DataSarana'});
+    hideModalDataPokok();
+  }
+  function navigateDataRombel(){
+    navigation.navigate('DataPokok', {screen: 'DataRombel'});
+    hideModalDataPokok();
+  }
+  function navigateDataGuru(){
+    navigation.navigate('DataPokok', {screen: 'DataGuru'});
+    hideModalDataPokok();
+  }
+  function navigateDataSiswa(){
+    navigation.navigate('DataPokok', {screen: 'DataSiswa'});
+    hideModalDataPokok();
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -109,36 +134,97 @@ export default function HomeScreen() {
 
       </View>
 
-      
-
-
-      
-
     <Portal>
-    <Modal  visible={modalDataPokok} onDismiss={hideModalDataPokok}>
-          <View style={styles.modal}>
-            <View>
-                <List.Item
-                  style={{backgroundColor:'black', color:'white'}}
-                  title="Data Sekolah"
-                  titleStyle={{color:'white'}}
-                  left={props => <List.Icon {...props} icon="folder" />}
-                />
+      <Dialog
+      visible={modalDataPokok} onDismiss={hideModalDataPokok}>
+        <Dialog.Content>
+          <Title style={{textAlign:'center'}}>Data Pokok</Title>
+          <Divider/>
+          <List.Item
+            title="Data Sekolah"
+            left={props => <List.Icon {...props} icon="school" />}
+            onPress={() => navigateDataSekolah()}
+            />
+            <Divider/>
+          <List.Item
+            title="Data Prasarana"
+            left={props => <List.Icon {...props} icon="book-multiple" />}
+            onPress={() => navigateDataPrasarana()}
+            />
+            <Divider/>
+          <List.Item
+            title="Data Sarana"
+            left={props => <List.Icon {...props} icon="laptop-chromebook" />}
+            onPress={() => navigateDataSarana()}
+            />
+            <Divider/>
+          <List.Item
+            title="Data Rombel"
+            left={props => <List.Icon {...props} icon="chair-school" />}
+            onPress={() => navigateDataRombel()}
+            />
+            <Divider/>
+          <List.Item
+            title="Data Guru"
+            left={props => <List.Icon {...props} icon="teach" />}
+            onPress={() => navigateDataGuru()}
+          />
+            <Divider/>
+          <List.Item
+            title="Data Siswa"
+            left={props => <List.Icon {...props} icon="account" />}
+            onPress={() => navigateDataSiswa()}
+          />
+        </Dialog.Content>
+      </Dialog>
 
-            </View>
-          </View>
-    </Modal>
-    <Modal  visible={modalElearning} onDismiss={hideModalElearning}>
-          <View style={styles.modal}>
-            <Text>This is Modal E-learning</Text>
-          </View>
-    </Modal>
-    <Modal  visible={modalUjian} onDismiss={hideModalUjian}>
-          <View style={styles.modal}>
-            <Text>This is Modal Ujian Online</Text>
-          </View>
-    </Modal>
-    </Portal>
+      <Dialog visible={modalElearning} onDismiss={hideModalElearning}>
+        <Dialog.Content>
+
+        <Title style={{textAlign:'center'}}>E-Learning</Title>
+          <Divider/>
+          <List.Item
+            title="Bank Soal"
+            left={props => <List.Icon {...props} icon="library-books" />}
+            />
+            <Divider/>
+          <List.Item
+            title="Materi Pelajaran"
+            left={props => <List.Icon {...props} icon="notebook-multiple" />}
+            />
+
+        </Dialog.Content>
+      </Dialog>
+
+      <Dialog visible={modalUjian} onDismiss={hideModalUjian}>
+        <Dialog.Content>
+          
+        <Title style={{textAlign:'center'}}>Ujian Online</Title>
+          <Divider/>
+          <List.Item
+            title="Ujian Online"
+            left={props => <List.Icon {...props} icon="pen" />}
+            />
+            <Divider/>
+          <List.Item
+            title="UTS/UAS"
+            left={props => <List.Icon {...props} icon="checkbook" />}
+            />
+          <Divider/>
+          <List.Item
+            title="Tryout Online"
+            left={props => <List.Icon {...props} icon="clipboard-text-outline" />}
+            />
+            <Divider/>
+          <List.Item
+            title="Students Online Competition"
+            left={props => <List.Icon {...props} icon="trophy-award" />}
+            />
+
+        </Dialog.Content>
+      </Dialog>
+
+      </Portal>
     </SafeAreaView>
   );
 }

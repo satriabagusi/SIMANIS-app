@@ -2,7 +2,7 @@ import { AppLoading } from 'expo';
 import React from 'react';
 
 import Router from './Router';
-import { Provider as PaperProvider } from 'react-native-paper';
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
 import {
   useFonts,
@@ -14,7 +14,26 @@ import {
   Poppins_700Bold,
 } from '@expo-google-fonts/poppins';
 
-export default function App() {
+
+const App = () => {
+
+  const theme ={
+    dark:false,
+    ...DefaultTheme,
+    roundness:2,
+    colors: {
+      ...DefaultTheme.colors,
+      primary: '#3F83F8',
+      accent: '#0A7391',
+      background: '#f2f2f2',
+      surface: '#f2f2f2',
+      text: '#001021',
+      error: '#F05252',
+      disabled: '#BEC6C6',
+      
+
+    }
+  }
   
   let [fonstLoaded] = useFonts({
     Poppins_100Thin,
@@ -32,13 +51,13 @@ export default function App() {
     return <AppLoading/>
   }else{
     return(
-      <PaperProvider>
+      <PaperProvider theme={theme}>
         <Router/>
       </PaperProvider>
     );
   }
-
-  
 }
+
+export default App;
 
 
