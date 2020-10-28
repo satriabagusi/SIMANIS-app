@@ -10,7 +10,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import DrawerMenu from '../assets/style/DrawerMenu/DrawerMenu';
 
-export function DrawerContent(props){
+export function DrawerContent({props, navigation}){
     return(
         <View style={{flex:1}}>
             <View style={styles.userInfoSection}>
@@ -47,7 +47,7 @@ export function DrawerContent(props){
                         />  
                     )}
                     label="Log Out"
-                    onPress={() => alert('LOG OUT')}
+                    onPress={() => navigation.navigate('Main', {screen: 'Main'})}
                 />
             </Drawer.Section>
         </View>

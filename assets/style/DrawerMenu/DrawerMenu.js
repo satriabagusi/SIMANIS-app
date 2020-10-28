@@ -6,8 +6,10 @@ import {Drawer, Text} from 'react-native-paper';
 
 import { responsiveScreenFontSize, responsiveScreenHeight, responsiveScreenWidth } from 'react-native-responsive-dimensions';
 
+import {useNavigation} from '@react-navigation/native';
 
-export default function DrawerMenu(props){
+export default function DrawerMenu({props}){
+    const navigation = useNavigation();
     return( 
                 <View style={styles.drawerContent}>
                     <Drawer.Section>
@@ -15,32 +17,32 @@ export default function DrawerMenu(props){
                         <DrawerItem
                     style={{marginVertical: responsiveScreenHeight(-0.4)}}        
                     label="Data Sekolah"
-                    onPress={() => alert("Data Sekolah")}
+                    onPress={() => navigation.navigate('DataPokok', {screen: 'DataSekolah'})}
                     />
                         <DrawerItem
                     style={{marginVertical: responsiveScreenHeight(-0.4)}}        
                     label="Data Prasarana"
-                    onPress={() => alert("Data Prasarana")}
+                    onPress={() => navigation.navigate('DataPokok', {screen: 'DataPrasarana'})}
                     />
                         <DrawerItem
                     style={{marginVertical: responsiveScreenHeight(-0.4)}}        
                     label="Data Sarana"
-                    onPress={() => alert("Data Sarana")}
+                    onPress={() => navigation.navigate('DataPokok', {screen: 'DataSarana'})}
                     />
                         <DrawerItem
                     style={{marginVertical: responsiveScreenHeight(-0.4)}}        
                     label="Data Rombel"
-                    onPress={() => alert("Data Rombel")}
+                    onPress={() => navigation.navigate('DataPokok', {screen: 'DataRombel'})}
                     />
                         <DrawerItem
                     style={{marginVertical: responsiveScreenHeight(-0.4)}}        
                     label="Data Guru"
-                    onPress={() => alert("Data Guru")}
+                    onPress={() => navigation.navigate('DataPokok', {screen: 'DataGuru'})}
                     />
                         <DrawerItem
                     style={{marginVertical: responsiveScreenHeight(-0.4)}}        
                     label="Data Siswa"
-                    onPress={() => alert("Data Siswa")}
+                    onPress={() => navigation.navigate('DataPokok', {screen: 'DataSiswa'})}
                     />
                     </Drawer.Section>
 

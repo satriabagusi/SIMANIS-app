@@ -1,17 +1,4 @@
-// import React, { Component } from 'react'
 
-// import {View, Text} from 'react-native';
-
-// const DataSekolah = () => {
-//     return(
-//         <View>
-//             <Text>Test</Text>
-//         </View>
-
-//     );
-// }
-
-// export default DataSekolah;
 
 import { useNavigation } from '@react-navigation/native';
 import * as React from 'react';
