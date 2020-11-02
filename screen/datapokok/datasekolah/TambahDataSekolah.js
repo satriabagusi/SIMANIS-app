@@ -112,7 +112,7 @@ const TambahDataSekolah = () => {
     </Appbar.Header>
 
 
-    <ScrollView style={{alignSelf:'center', alignContent:'center', width: responsiveScreenWidth(90), height:responsiveScreenHeight(90)}}>
+    <ScrollView style={{alignSelf:'center', alignContent:'center', width: responsiveScreenWidth(90), height:responsiveScreenHeight(80)}}>
     
     <DataTable.Row>
        <DataTable.Cell>Jenjang</DataTable.Cell>

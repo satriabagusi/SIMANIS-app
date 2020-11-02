@@ -25,7 +25,7 @@ const LoginScreen = ({navigation}) => {
   //   style={styles.fluid}
   style={{position:'absolute',
   justifyContent: "center",
-  top:-320,
+  top:-350,
   zIndex:-99,}}
     />
         <View style={{padding: 24, flex: 1, justifyContent: "space-around"}}>
@@ -39,11 +39,11 @@ const LoginScreen = ({navigation}) => {
           <Headline style={{top:responsiveHeight(2), color:"white",fontFamily:'Poppins_700Bold'}}>Login</Headline>
           <Image
             source={require('../../assets/muaraenimlogo.gif')}
-            style={{width:responsiveWidth(25), height:responsiveHeight(25)}}
+            style={{width:responsiveWidth(20), height:responsiveHeight(20)}}
             resizeMode="center"/>
           </View>
 
-          <View style={{flex:1, flexDirection:'column', bottom:responsiveHeight(28)}}>
+          <View style={{flex:1, flexDirection:'column', bottom:responsiveHeight(33)}}>
           <TextInput
             mode="flat"
             style={{backgroundColor:'rgba(255, 255, 255, 0)'}}

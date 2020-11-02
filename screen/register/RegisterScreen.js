@@ -1,74 +1,94 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { Image,Text, TouchableOpacity, View } from 'react-native';
+import React, {useState} from 'react';
+import { Image,KeyboardAvoidingView,Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { Button, Headline, Menu, TextInput, useTheme } from 'react-native-paper';
-import { responsiveFontSize, responsiveHeight, responsiveScreenHeight, responsiveScreenWidth } from 'react-native-responsive-dimensions';
+import { Button, Headline, TextInput, useTheme } from 'react-native-paper';
+import { responsiveFontSize, responsiveHeight, responsiveScreenHeight, responsiveScreenWidth, responsiveWidth } from 'react-native-responsive-dimensions';
+import DropDown from 'react-native-paper-dropdown';
 
-const Register = ({navigation}) => {
+import Icons from '@expo/vector-icons/Ionicons';
+import { Picker } from '@react-native-picker/picker';
+
+const RegisterScreen = ({navigation}) => {
   const theme = useTheme();
-  const [sebagaiMenu, setSebagaiMenu] = React.useState(false);
-  const [sebagai, setSebagai] = React.useState('');
-  const openSebagai = () => setSebagaiMenu(true);
-  const closeSebagai = () => setSebagaiMenu(false);
+  const [loginAs, setLoginAs] = useState('');
 
-  if (sebagai == "" ){
-    setSebagai('Login Sebagai');
-  }
 
   return(
-    <View >
-    <StatusBar style={"light"}/>
+    
+
+<KeyboardAvoidingView
+  enabled={false}
+      behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+      style={{flex:1}}>
+
+<StatusBar style={"light"}/>
     <Image
     source={require('../../assets/fluid-bg.png')}
   //   style={styles.fluid}
   style={{position:'absolute',
   justifyContent: "center",
-  top:-320,
+  top:-350,
   zIndex:-99,}}
     />
+        <View style={{padding: 24, flex: 1, justifyContent: "space-around"}}>
+          <View style={{flex:1, flexDirection:'row', alignContent:'center', top:responsiveHeight(4)}}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Icons name="md-arrow-round-back" size={24} color="white" />
+            </TouchableOpacity>
+          </View>
 
-  <View style={{flexDirection:'column',  alignSelf:'center', }}>
-    <View style={{justifyContent:'center', marginTop:responsiveHeight(15)}}>
-    <Headline style={{fontFamily:'Poppins_700Bold', color:'white', fontSize:30, textAlign:'center' }}> Register </Headline>
-    </View>
+          <View style={{flex:1, alignItems:'center', bottom:responsiveHeight(28)}}>
+          <Headline style={{top:responsiveHeight(2), color:"white",fontFamily:'Poppins_700Bold'}}>Register</Headline>
+          <Image
+            source={require('../../assets/muaraenimlogo.gif')}
+            style={{width:responsiveWidth(20), height:responsiveHeight(20)}}
+            resizeMode="center"/>
+          </View>
 
-    <View style={{width:responsiveScreenWidth(75), flex:1, flexDirection:'column', justifyContent:'center', marginTop:responsiveHeight(-10)}}>
-      <TextInput
-      mode="outlined"
-      style={{backfaceVisibility:'hidden'}}
-      label="Email"
-      />
-      <TextInput
-      mode="outlined"
-      style={{backgroundColor:theme.colors.background}}
-      label="Password"
-      secureTextEntry={true}
-      />
-      <TextInput
-      mode="outlined"
-      style={{backgroundColor:theme.colors.background}}
-      label="Konfirmasi Password"
-      secureTextEntry={true}
-      />
-      <Menu
-      style={{paddingTop:responsiveHeight(5), alignContent:'flex-end'}}
-      visible={sebagaiMenu}
-      onDismiss={closeSebagai}
-      anchor={<Button onPress={openSebagai} mode="outlined">{sebagai}</Button>}>
-        <Menu.Item onPress={() => setSebagai('Siswa')} title="Siswa" />
-        <Menu.Item onPress={() => setSebagai('Guru')} title="Guru" />
-        <Menu.Item onPress={() => setSebagai('Admin')} title="Admin" />
-      </Menu>
-      <Button style={{marginTop:responsiveHeight(1)}} mode="contained" onPress={() => navigation.navigate('Home')}>Register</Button>
-    </View>
-    
-  </View>
+          <View style={{flex:1, flexDirection:'column', bottom:responsiveHeight(33)}}>
+          <TextInput
+            mode="flat"
+            style={{backgroundColor:'rgba(255, 255, 255, 0)'}}
+            label="Email"
+            returnKeyType="next"
+            />
+            <TextInput
+            mode="flat"
+            style={{backgroundColor:'rgba(255, 255, 255, 0)'}}
+            label="Password"
+            secureTextEntry={true}
+            returnKeyType="next"
+            />
+            <TextInput
+            mode="flat"
+            style={{backgroundColor:'rgba(255, 255, 255, 0)'}}
+            label="Konfirmasi Password"
+            secureTextEntry={true}
+            returnKeyType="next"
+            />
 
-  </View>
+            <View>
+            <Text style={{fontFamily:'Poppins_400Regular', left:5, top:10, color:'#8d8d8d'}}>Login Sebagai</Text>
+            <Picker mode="dropdown" 
+            onValueChange={(itemValue) => setLoginAs(itemValue)}
+            selectedValue={loginAs}>
+              <Picker.Item label="Siswa" value="Siswa"  />
+              <Picker.Item label="Guru" value="Guru"  />
+              <Picker.Item label="Admin Sekolah" value="Admin Sekolah"  />
+            </Picker>
+            </View>
+
+            <Button style={{marginTop:responsiveHeight(1)}} mode="contained" onPress={() => navigation.navigate('Home')}>Register</Button>
+          </View>
+
+        </View>
+    </KeyboardAvoidingView>
+
+
   );
 }
 
-export default Register;
+export default RegisterScreen;
