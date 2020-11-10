@@ -45,7 +45,7 @@ const RegisterScreen = ({navigation}) => {
           <Image
             source={require('../../assets/muaraenimlogo.gif')}
             style={{width:responsiveWidth(20), height:responsiveHeight(20)}}
-            resizeMode="center"/>
+            resizeMode= {Platform.OS === 'ios' ? "contain" : "center"}/>
           </View>
 
           <View style={{flex:1, flexDirection:'column', bottom:responsiveHeight(33)}}>
@@ -72,7 +72,7 @@ const RegisterScreen = ({navigation}) => {
 
             <View>
             <Text style={{fontFamily:'Poppins_400Regular', left:5, top:10, color:'#8d8d8d'}}>Login Sebagai</Text>
-            <Picker mode="dropdown" 
+            <Picker mode="dialog" 
             onValueChange={(itemValue) => setLoginAs(itemValue)}
             selectedValue={loginAs}>
               <Picker.Item label="Siswa" value="Siswa"  />

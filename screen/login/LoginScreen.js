@@ -40,7 +40,8 @@ const LoginScreen = ({navigation}) => {
           <Image
             source={require('../../assets/muaraenimlogo.gif')}
             style={{width:responsiveWidth(20), height:responsiveHeight(20)}}
-            resizeMode="center"/>
+            resizeMode= {Platform.OS === 'ios' ? "contain" : "center"}
+            />
           </View>
 
           <View style={{flex:1, flexDirection:'column', bottom:responsiveHeight(33)}}>

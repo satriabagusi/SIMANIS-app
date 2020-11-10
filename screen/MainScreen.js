@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Image,Text, TouchableOpacity, View } from 'react-native';
+import { Image,Platform,Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -27,7 +27,8 @@ const MainScreen = ({navigation}) => {
     <Image
             source={require('../assets/muaraenimlogo.gif')}
             style={{width:responsiveWidth(25), height:responsiveHeight(25)}}
-            resizeMode="center"/>
+            resizeMode= {Platform.OS === 'ios' ? "contain" : "center"}
+            />
     </View>
     <View style={{marginTop: responsiveScreenHeight(30)}}>
     <Button icon="login" mode="contained" onPress={() => navigation.navigate('Login')}>
