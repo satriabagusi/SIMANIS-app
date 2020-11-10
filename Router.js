@@ -21,6 +21,7 @@ import DataRombel from './screen/datapokok/datarombel/DataRombel';
 import TambahDataRombel from './screen/datapokok/datarombel/TambahDataRombel';
 
 import DataGuru from './screen/datapokok/dataguru/DataGuru';
+import TambahDataGuru from './screen/datapokok/dataguru/TambahDataGuru';
 
 import DataSiswa from './screen/datapokok/datasiswa/DataSiswa';
 import TambahDataSiswa from './screen/datapokok/datasiswa/TambahDataSiswa';
@@ -80,6 +81,18 @@ function DataRombelStackScreen(){
   );
 }
 
+const DataGuruStack = createStackNavigator();
+function DataGuruStackScreen(){
+  return(
+    <DataGuruStack.Navigator
+    initialRouteName="DataGuru"
+    screenOptions={{headerShown:false}}>
+      <DataGuruStack.Screen name="DataGuru" component={DataGuru}/>
+      <DataGuruStack.Screen name="TambahDataGuru" component={TambahDataGuru}/>
+    </DataGuruStack.Navigator>
+  );
+}
+
 const DataSiswaStack = createStackNavigator();
 function DataSiswaStackScreen(){
   return(
@@ -97,11 +110,11 @@ function DataStackScreen(){
   return(
       <DataStack.Navigator 
       screenOptions={{headerShown:false}}>
-        <DataStack.Screen name="DataSekolahStack" component={DataSekolahStackScreen} />
+        <DataStack.Screen name="DataSekolah" component={DataSekolahStackScreen} />
         <DataStack.Screen name="DataPrasarana" component={DataPrasaranaStackScreen} />
         <DataStack.Screen name="DataSarana" component={DataSaranaStackScreen} />
         <DataStack.Screen name="DataRombel" component={DataRombelStackScreen} />
-        <DataStack.Screen name="DataGuru" component={DataGuru} />
+        <DataStack.Screen name="DataGuru" component={DataGuruStackScreen} />
         <DataStack.Screen name="DataSiswa" component={DataSiswaStackScreen} />
       </DataStack.Navigator>
   );
@@ -122,14 +135,13 @@ function HomeStackScreen(){
 const MainStack = createStackNavigator();
 function MainStackScreen(){
   return(
-      <MainStack.Navigator initialRouteName="Main"
-      screenOptions={{
-        headerShown: false,
-      }}>
-        <MainStack.Screen name="Main" component={MainScreen} />
-        <MainStack.Screen name="Login" component={LoginScreen} />
-        <MainStack.Screen name="Register" component={RegisterScreen} />
-      </MainStack.Navigator>
+    <MainStack.Navigator
+    initialRouteName="Main"
+    screenOptions={{headerShown:false}}>
+      <MainStack.Screen name="Main" component={MainScreen}/>
+      <MainStack.Screen name="Login" component={LoginScreen}/>
+      <MainStack.Screen name="Register" component={RegisterScreen}/>
+    </MainStack.Navigator>
   );
 }
 
@@ -138,7 +150,7 @@ const Router = () => {
   return(
     <NavigationContainer>
       <RootStack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Main"
       screenOptions={{
         headerShown: false,
       }}>

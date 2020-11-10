@@ -8,7 +8,7 @@ export default styles = StyleSheet.create({
     fluid:{
       position:'absolute',
       justifyContent: "center",
-      top:responsiveScreenHeight(-25),
+      top:-350,
       zIndex:-99,
     },
     sectionTop:{
@@ -34,7 +34,7 @@ export default styles = StyleSheet.create({
       justifyContent: "center",
       alignItems: "center",
       alignSelf: 'center',
-      backgroundColor:"#FFF",
+      backgroundColor:"#FFFFFF",
       width: responsiveWidth(80),
       height: responsiveHeight(45),
       // marginHorizontal: responsiveWidth(15),

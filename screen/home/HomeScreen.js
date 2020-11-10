@@ -66,9 +66,9 @@ export default function HomeScreen() {
       <View style={styles.profile}>
           <Avatar.Image size={responsiveScreenWidth(24)} 
           source={{uri:'https://images.unsplash.com/photo-1600527097450-569db51cf00d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80'}} />
-        <Text style={{fontFamily: 'Poppins_400Regular',fontWeight:'bold', fontSize: responsiveFontSize(3), color:'white', marginBottom:5}}>John Doe</Text>
-        <Text style={{fontFamily: 'Poppins_400Regular',fontSize: responsiveFontSize(2), color:'white'}}>SMA 1 Indonesia</Text>
-        <Text style={{fontFamily: 'Poppins_400Regular',fontSize: responsiveFontSize(1.5) ,color:'white'}}>Admin Sekolah</Text>
+        <Text style={{fontFamily: 'Poppins_400Regular',fontWeight:'bold', fontSize: responsiveFontSize(3), color:'black', marginBottom:5}}>John Doe</Text>
+        <Text style={{fontFamily: 'Poppins_400Regular',fontSize: responsiveFontSize(2), color:'black'}}>SMA 1 Indonesia</Text>
+        <Text style={{fontFamily: 'Poppins_400Regular',fontSize: responsiveFontSize(1.5) ,color:'black'}}>Admin Sekolah</Text>
       </View>
       </View>
 

@@ -1,3 +1,18 @@
+// import React, { Component } from 'react'
+
+// import {View, Text} from 'react-native';
+
+// const DataSekolah = () => {
+//     return(
+//         <View>
+//             <Text>Test</Text>
+//         </View>
+
+//     );
+// }
+
+// export default DataSekolah;
+
 import { useNavigation } from '@react-navigation/native';
 import * as React from 'react';
 import { View, ScrollView } from 'react-native';
@@ -6,23 +21,20 @@ import { responsiveScreenHeight, responsiveScreenWidth } from 'react-native-resp
 import {MaterialCommunityIcons as Icons} from '@expo/vector-icons';
 
 const DataSekolah = () => {
-    const theme = useTheme();
-    const navigation = useNavigation();
     const [menuJenjang, setMenuJenjang] = React.useState(false);
     const [menuProvinsi, setMenuProvinsi] = React.useState(false);
     const [menuKota, setMenuKota] = React.useState(false);
     const [menuKecamatan, setMenuKecamatan] = React.useState(false);
     const [menuSekolah, setMenuSekolah] = React.useState(false);
     const [jenjang, setJenjang] = React.useState('');
-    const [status, setStatus] = React.useState('');
     const [provinsi, setProvinsi] = React.useState('');
     const [kota, setKota] = React.useState('');
     const [kecamatan, setKecamatan] = React.useState('');
     const [sekolah, setSekolah] = React.useState('');
     const openJenjang = () => setMenuJenjang(true);
     const closeJenjang = () => setMenuJenjang(false);
-    const openSekolah = () => setMenuStatus(true);
-    const closeSekolah = () => setMenuStatus(false);
+    const openSekolah = () => setMenuSekolah(true);
+    const closeSekolah = () => setMenuSekolah(false);
     const openProvinsi = () => setMenuProvinsi(true);
     const closeProvinsi = () => setMenuProvinsi(false);
     const openKota = () => setMenuKota(true);
@@ -107,8 +119,7 @@ const DataSekolah = () => {
     }
 
   return (
-    <View style={{alignSelf:'center', alignContent:'center'}}> 
-
+    <View> 
         
     <DataTable.Row>
         <DataTable.Cell>Provinsi</DataTable.Cell>
