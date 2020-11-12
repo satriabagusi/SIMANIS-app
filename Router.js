@@ -10,21 +10,18 @@ import DataSekolah from './screen/datapokok/datasekolah/DataSekolah';
 import TambahDataSekolah from './screen/datapokok/datasekolah/TambahDataSekolah';
 import ListJenjangSekolah from './screen/datapokok/datasekolah/ListJenjangSekolah';
 import DetailDataSekolah from './screen/datapokok/datasekolah/DetailDataSekolah';
-
 import DataPrasarana from './screen/datapokok/dataprasarana/DataPrasarana';
 import TambahDataPrasarana from './screen/datapokok/dataprasarana/TambahDataPrasarana';
-
 import DataSarana from './screen/datapokok/datasarana/DataSarana';
 import TambahDataSarana from './screen/datapokok/datasarana/TambahDataSarana';
-
 import DataRombel from './screen/datapokok/datarombel/DataRombel';
 import TambahDataRombel from './screen/datapokok/datarombel/TambahDataRombel';
-
 import DataGuru from './screen/datapokok/dataguru/DataGuru';
 import TambahDataGuru from './screen/datapokok/dataguru/TambahDataGuru';
-
 import DataSiswa from './screen/datapokok/datasiswa/DataSiswa';
 import TambahDataSiswa from './screen/datapokok/datasiswa/TambahDataSiswa';
+
+import JadwalPelajaran from './screen/datakurikulum/jadwalpelajaran/JadwalPelajaran';
 
 import LoginScreen from './screen/login/LoginScreen';
 import RegisterScreen from './screen/register/RegisterScreen';
@@ -105,18 +102,28 @@ function DataSiswaStackScreen(){
   );
 }
 
-const DataStack = createStackNavigator();
-function DataStackScreen(){
+const DataPokokStack = createStackNavigator();
+function DataPokokScreen(){
   return(
-      <DataStack.Navigator 
+      <DataPokokStack.Navigator 
       screenOptions={{headerShown:false}}>
-        <DataStack.Screen name="DataSekolah" component={DataSekolahStackScreen} />
-        <DataStack.Screen name="DataPrasarana" component={DataPrasaranaStackScreen} />
-        <DataStack.Screen name="DataSarana" component={DataSaranaStackScreen} />
-        <DataStack.Screen name="DataRombel" component={DataRombelStackScreen} />
-        <DataStack.Screen name="DataGuru" component={DataGuruStackScreen} />
-        <DataStack.Screen name="DataSiswa" component={DataSiswaStackScreen} />
-      </DataStack.Navigator>
+        <DataPokokStack.Screen name="DataSekolah" component={DataSekolahStackScreen} />
+        <DataPokokStack.Screen name="DataPrasarana" component={DataPrasaranaStackScreen} />
+        <DataPokokStack.Screen name="DataSarana" component={DataSaranaStackScreen} />
+        <DataPokokStack.Screen name="DataRombel" component={DataRombelStackScreen} />
+        <DataPokokStack.Screen name="DataGuru" component={DataGuruStackScreen} />
+        <DataPokokStack.Screen name="DataSiswa" component={DataSiswaStackScreen} />
+      </DataPokokStack.Navigator>
+  );
+}
+
+const DataKurikulum = createStackNavigator();
+function DataKurikulumScreen(){
+  return(
+    <DataKurikulum.Navigator
+    screenOptions={{headerShown:false}}>
+      <DataKurikulum.Screen name="JadwalPelajaran" component={JadwalPelajaran} />
+    </DataKurikulum.Navigator>
   );
 }
 
@@ -127,7 +134,8 @@ function HomeStackScreen(){
       drawerContent={props => <DrawerContent {...props} />}
       initialRouteName="Home">
         <Drawer.Screen name="Home" component={HomeScreen}/>
-        <Drawer.Screen name="DataPokok" component={DataStackScreen} />
+        <Drawer.Screen name="DataPokok" component={DataPokokScreen} />
+        <Drawer.Screen name="DataKurikulum" component={DataKurikulumScreen} />
     </Drawer.Navigator>
   );
 }

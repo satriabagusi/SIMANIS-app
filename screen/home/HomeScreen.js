@@ -87,7 +87,7 @@ export default function HomeScreen() {
 
         <View style={{flexDirection: 'row', justifyContent:'space-between', marginTop:responsiveScreenHeight(2)}}>
           <TouchableOpacity
-          onPress={() => alert("JADWAL PELAJARAN")} >
+          onPress={() => navigation.navigate('DataKurikulum', {screen: 'JadwalPelajaran'})} >
             <Surface style={{borderRadius:10 ,elevation: 4, alignItems: 'center', justifyContent:'center', height: responsiveScreenHeight(12), width:responsiveScreenWidth(24)}}>
               <Image source={require('../../assets/icons/jadwalIcon.png')} style={{width: responsiveScreenWidth(8.5), height: responsiveScreenHeight(5)}}/>
               <Text style={{fontFamily: 'Poppins_400Regular', textAlign:'center', fontSize:responsiveScreenFontSize(1.5)}}>Jadwal Pelajaran</Text>
