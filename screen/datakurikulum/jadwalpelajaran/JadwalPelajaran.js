@@ -30,7 +30,7 @@ const JadwalPelajaran = () => {
     <Appbar.Header>
       <Appbar.BackAction onPress={() => navigation.navigate('Home', {screen: 'Home'})} />
       <Appbar.Content title="Jadwal Pelajaran" />
-      <Appbar.Action icon="plus" onPress={() =>navigation.navigate('TambahDataJadwal')} />
+      <Appbar.Action icon="plus" onPress={() =>navigation.navigate('TambahJadwal')} />
     </Appbar.Header>
 
     <ScrollView style={{}}>

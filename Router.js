@@ -22,6 +22,7 @@ import DataSiswa from './screen/datapokok/datasiswa/DataSiswa';
 import TambahDataSiswa from './screen/datapokok/datasiswa/TambahDataSiswa';
 
 import JadwalPelajaran from './screen/datakurikulum/jadwalpelajaran/JadwalPelajaran';
+import TambahDataJadwal from './screen/datakurikulum/jadwalpelajaran/TambahDataJadwal';
 
 import LoginScreen from './screen/login/LoginScreen';
 import RegisterScreen from './screen/register/RegisterScreen';
@@ -117,12 +118,24 @@ function DataPokokScreen(){
   );
 }
 
+const DataJadwalStack = createStackNavigator();
+function DataJadwalStackScreen(){
+  return(
+    <DataJadwalStack.Navigator
+    initialRouteName="JadwalPelajaran"
+    screenOptions={{headerShown:false}}>
+      <DataJadwalStack.Screen name="JadwalPelajaran" component={JadwalPelajaran}/>
+      <DataJadwalStack.Screen name="TambahJadwal" component={TambahDataJadwal}/>
+    </DataJadwalStack.Navigator>
+  );
+}
+
 const DataKurikulum = createStackNavigator();
 function DataKurikulumScreen(){
   return(
     <DataKurikulum.Navigator
     screenOptions={{headerShown:false}}>
-      <DataKurikulum.Screen name="JadwalPelajaran" component={JadwalPelajaran} />
+      <DataKurikulum.Screen name="JadwalPelajaran" component={DataJadwalStackScreen} />
     </DataKurikulum.Navigator>
   );
 }
