@@ -24,6 +24,12 @@ import TambahDataSiswa from './screen/datapokok/datasiswa/TambahDataSiswa';
 import JadwalPelajaran from './screen/datakurikulum/jadwalpelajaran/JadwalPelajaran';
 import TambahDataJadwal from './screen/datakurikulum/jadwalpelajaran/TambahDataJadwal';
 
+import UjianOnline from './screen/ujian/ujianonline/UjianOnline';
+import TambahUjian from './screen/ujian/ujianonline/TambahUjianOnline';
+
+import UtsUasOnline from './screen/ujian/utsuasonline/UtsUasOnline';
+import TambahUtsUasOnline from './screen/ujian/utsuasonline/TambahUtsUasOnline';
+
 import LoginScreen from './screen/login/LoginScreen';
 import RegisterScreen from './screen/register/RegisterScreen';
 import MainScreen from './screen/MainScreen';
@@ -140,6 +146,29 @@ function DataKurikulumScreen(){
   );
 }
 
+const DataUjianOnline = createStackNavigator();
+function DataUjianScreen(){
+  return(
+    <DataUjianOnline.Navigator
+    screenOptions={{headerShown:false}}>
+      <DataUjianOnline.Screen name="UjianOnline" component={UjianOnline}/>
+      <DataUjianOnline.Screen name="TambahUjian" component={TambahUjian}/>
+    </DataUjianOnline.Navigator>
+  );
+}
+
+const UtsUasOnlineStack = createStackNavigator();
+function UtsUasScreen(){
+  return(
+    <UtsUasOnlineStack.Navigator
+    screenOptions={{headerShown:false}}>
+      <UtsUasOnlineStack.Screen name="UtsUasOnline" component={UtsUasOnline}/>
+      <UtsUasOnlineStack.Screen name="TambahUtsUas" component={TambahUtsUasOnline} />
+
+    </UtsUasOnlineStack.Navigator>
+  );
+}
+
 const Drawer = createDrawerNavigator();
 function HomeStackScreen(){
   return(
@@ -149,6 +178,8 @@ function HomeStackScreen(){
         <Drawer.Screen name="Home" component={HomeScreen}/>
         <Drawer.Screen name="DataPokok" component={DataPokokScreen} />
         <Drawer.Screen name="DataKurikulum" component={DataKurikulumScreen} />
+        <Drawer.Screen name="DataUjian" component={DataUjianScreen}/>
+        <Drawer.Screen name="UtsUasOnline" component={UtsUasScreen}/>
     </Drawer.Navigator>
   );
 }

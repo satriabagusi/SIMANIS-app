@@ -47,6 +47,14 @@ export default function HomeScreen() {
     navigation.navigate('DataPokok', {screen: 'DataSiswa'});
     hideModalDataPokok();
   }
+  function navigateDataUjian(){
+    navigation.navigate('DataUjian', {screen: 'UjianOnline'});
+    hideModalUjian();
+  }
+  function navigateUtsUas(){
+    navigation.navigate('UtsUasOnline', {screen: 'UtsUasOnline'});
+    hideModalUjian();
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -204,11 +212,13 @@ export default function HomeScreen() {
           <List.Item
             title="Ujian Online"
             left={props => <List.Icon {...props} icon="pen" />}
+            onPress={() => navigateDataUjian()}
             />
             <Divider/>
           <List.Item
             title="UTS/UAS"
             left={props => <List.Icon {...props} icon="checkbook" />}
+            onPress={() => navigateUtsUas()}
             />
           <Divider/>
           <List.Item
