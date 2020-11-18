@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Image,Text, TouchableOpacity, View } from 'react-native';
+import { Image,ScrollView,Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -55,6 +55,14 @@ export default function HomeScreen() {
     navigation.navigate('UtsUasOnline', {screen: 'UtsUasOnline'});
     hideModalUjian();
   }
+  function navigateTryout(){
+    navigation.navigate('TryoutOnline', {screen: 'TryoutOnline'});
+    hideModalUjian();
+  }
+  function navigateSOC(){
+    navigation.navigate('Soc', {screen: 'Soc'});
+    hideModalUjian();
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -76,13 +84,13 @@ export default function HomeScreen() {
           source={{uri:'https://images.unsplash.com/photo-1600527097450-569db51cf00d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80'}} />
         <Text style={{fontFamily: 'Poppins_400Regular',fontWeight:'bold', fontSize: responsiveFontSize(3), color:'black', marginBottom:5}}>John Doe</Text>
         <Text style={{fontFamily: 'Poppins_400Regular',fontSize: responsiveFontSize(2), color:'black'}}>SMA 1 Indonesia</Text>
-        <Text style={{fontFamily: 'Poppins_400Regular',fontSize: responsiveFontSize(1.5) ,color:'black'}}>Admin Sekolah</Text>
+        <Text style={{fontFamily: 'Poppins_400Regular',fontSize: responsiveFontSize(1.5) ,color:'black'}}>Dinas Pendidikan</Text>
       </View>
       </View>
 
-      <View style={{flex:1, alignSelf:'center', width:responsiveScreenWidth(80), top:responsiveScreenHeight(-13), maxHeight:450}}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{flex:1, alignSelf:'center', width:responsiveScreenWidth(82), top:responsiveScreenHeight(-5), minHeight:200}}>
 
-        <View>
+        <View style={{paddingHorizontal:2}}>
         <TouchableOpacity
         onPress={showModalDataPokok}>
           <Surface style={{borderRadius:10 ,elevation: 4, alignItems: 'center', justifyContent:'center', height: responsiveScreenHeight(12)}}>
@@ -93,7 +101,7 @@ export default function HomeScreen() {
 
         </View>
 
-        <View style={{flexDirection: 'row', justifyContent:'space-between', marginTop:responsiveScreenHeight(2)}}>
+        <View style={{flexDirection: 'row', justifyContent:'space-between', marginTop:responsiveScreenHeight(2), paddingHorizontal:2}}>
           <TouchableOpacity
           onPress={() => navigation.navigate('DataKurikulum', {screen: 'JadwalPelajaran'})} >
             <Surface style={{borderRadius:10 ,elevation: 4, alignItems: 'center', justifyContent:'center', height: responsiveScreenHeight(12), width:responsiveScreenWidth(24)}}>
@@ -117,30 +125,89 @@ export default function HomeScreen() {
               <Text style={{fontFamily: 'Poppins_400Regular', textAlign:'center', fontSize:responsiveScreenFontSize(1.5)}}>Tugas Siswa</Text>
             </Surface>
           </TouchableOpacity>
-          
         </View>
 
-        <View style={{marginTop: responsiveScreenHeight(2)}}>
+        <View style={{flexDirection: 'row', justifyContent:'space-between',marginTop: responsiveScreenHeight(2), paddingHorizontal:2}}>
         <TouchableOpacity
         onPress={showModalElearning} >
-          <Surface style={{borderRadius:10 ,elevation: 4, alignItems: 'center', justifyContent:'center', height: responsiveScreenHeight(12)}}>
+          <Surface style={{borderRadius:10 ,elevation: 4, alignItems: 'center', justifyContent:'center', height: responsiveScreenHeight(12), width:responsiveScreenWidth(38)}}>
             <Image source={require('../../assets/icons/elearningIcon.png')} style={{width: responsiveScreenWidth(13), height: responsiveScreenHeight(7)}}/>
             <Text style={{fontFamily: 'Poppins_400Regular', textAlign:'center'}}>E-Learning</Text>
           </Surface>
         </TouchableOpacity>
-        </View>
 
-        <View style={{marginTop: responsiveScreenHeight(2)}}>
         <TouchableOpacity
         onPress={showModalUjian} >
-          <Surface style={{borderRadius:10 ,elevation: 4, alignItems: 'center', justifyContent:'center', height: responsiveScreenHeight(12)}}>
+          <Surface style={{borderRadius:10 ,elevation: 4, alignItems: 'center', justifyContent:'center', height: responsiveScreenHeight(12), width:responsiveScreenWidth(38)}}>
             <Image source={require('../../assets/icons/ujianIcon.png')} style={{width: responsiveScreenWidth(14.5), height: responsiveScreenHeight(5.7)}}/>
             <Text style={{fontFamily: 'Poppins_400Regular', textAlign:'center'}}>Ujian Online</Text>
           </Surface>
         </TouchableOpacity>
         </View>
 
-      </View>
+        <View style={{flexDirection: 'row', justifyContent:'space-between', marginTop:responsiveScreenHeight(2), paddingHorizontal:2}}>
+          <TouchableOpacity
+          onPress={() => navigation.navigate('DataKurikulum', {screen: 'JadwalPelajaran'})} >
+            <Surface style={{borderRadius:10 ,elevation: 4, alignItems: 'center', justifyContent:'center', height: responsiveScreenHeight(12), width:responsiveScreenWidth(24)}}>
+              <Image source={require('../../assets/icons/jadwalIcon.png')} style={{width: responsiveScreenWidth(8.5), height: responsiveScreenHeight(5)}}/>
+              <Text style={{fontFamily: 'Poppins_400Regular', textAlign:'center', fontSize:responsiveScreenFontSize(1.5)}}>Tahun Ajaran</Text>
+            </Surface>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+          onPress={() => alert("Absensi Siswa")} >
+            <Surface style={{borderRadius:10 ,elevation: 4, alignItems: 'center', justifyContent:'center', height: responsiveScreenHeight(12), width:responsiveScreenWidth(24)}}>
+              <Image source={require('../../assets/icons/absensiIcon.png')} style={{width: responsiveScreenWidth(9.8), height: responsiveScreenHeight(4)}}/>
+              <Text style={{fontFamily: 'Poppins_400Regular', textAlign:'center', fontSize:responsiveScreenFontSize(1.5)}}>Semester</Text>
+            </Surface>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+          onPress={() => alert("Tugas Siswa")} >
+            <Surface style={{borderRadius:10 ,elevation: 4, alignItems: 'center', justifyContent:'center', height: responsiveScreenHeight(12), width:responsiveScreenWidth(24)}}>
+              <Image source={require('../../assets/icons/tugasIcon.png')} style={{width: responsiveScreenWidth(6), height: responsiveScreenHeight(5)}}/>
+              <Text style={{fontFamily: 'Poppins_400Regular', textAlign:'center', fontSize:responsiveScreenFontSize(1.5)}}>Pelajaran</Text>
+            </Surface>
+          </TouchableOpacity>
+        </View>
+        <View style={{flexDirection: 'row', justifyContent:'space-between', marginTop:responsiveScreenHeight(2), paddingHorizontal:2}}>
+          <TouchableOpacity
+          onPress={() => navigation.navigate('DataKurikulum', {screen: 'JadwalPelajaran'})} >
+            <Surface style={{borderRadius:10 ,elevation: 4, alignItems: 'center', justifyContent:'center', height: responsiveScreenHeight(12), width:responsiveScreenWidth(24)}}>
+              <Image source={require('../../assets/icons/jadwalIcon.png')} style={{width: responsiveScreenWidth(8.5), height: responsiveScreenHeight(5)}}/>
+              <Text style={{fontFamily: 'Poppins_400Regular', textAlign:'center', fontSize:responsiveScreenFontSize(1.5)}}>Jenis Prasarana</Text>
+            </Surface>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+          onPress={() => alert("Absensi Siswa")} >
+            <Surface style={{borderRadius:10 ,elevation: 4, alignItems: 'center', justifyContent:'center', height: responsiveScreenHeight(12), width:responsiveScreenWidth(24)}}>
+              <Image source={require('../../assets/icons/absensiIcon.png')} style={{width: responsiveScreenWidth(9.8), height: responsiveScreenHeight(4)}}/>
+              <Text style={{fontFamily: 'Poppins_400Regular', textAlign:'center', fontSize:responsiveScreenFontSize(1.5)}}>Jenis Sarana</Text>
+            </Surface>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+          onPress={() => alert("Tugas Siswa")} >
+            <Surface style={{borderRadius:10 ,elevation: 4, alignItems: 'center', justifyContent:'center', height: responsiveScreenHeight(12), width:responsiveScreenWidth(24)}}>
+              <Image source={require('../../assets/icons/tugasIcon.png')} style={{width: responsiveScreenWidth(6), height: responsiveScreenHeight(5)}}/>
+              <Text style={{fontFamily: 'Poppins_400Regular', textAlign:'center', fontSize:responsiveScreenFontSize(1.5)}}>Data Admin</Text>
+            </Surface>
+          </TouchableOpacity>
+        </View>
+
+        <View style={{paddingHorizontal:2, marginVertical:responsiveScreenHeight(2)}}>
+        <TouchableOpacity
+        onPress={showModalDataPokok}>
+          <Surface style={{borderRadius:10 ,elevation: 4, alignItems: 'center', justifyContent:'center', height: responsiveScreenHeight(12)}}>
+          <Image source={require('../../assets/icons/PokokSekolahIcon.png')} style={{width: responsiveScreenWidth(16.5), height: responsiveScreenHeight(6.5)}}/>
+            <Text style={{fontFamily: 'Poppins_400Regular', textAlign:'center', fontSize:responsiveScreenFontSize(1.5)}}>Admin Sekolah</Text>
+          </Surface>
+        </TouchableOpacity>
+
+        </View>
+
+      </ScrollView>
 
     <Portal>
       <Dialog
@@ -224,11 +291,13 @@ export default function HomeScreen() {
           <List.Item
             title="Tryout Online"
             left={props => <List.Icon {...props} icon="clipboard-text-outline" />}
+            onPress={() => navigateTryout()}
             />
             <Divider/>
           <List.Item
             title="Students Online Competition"
             left={props => <List.Icon {...props} icon="trophy-award" />}
+            onPress={() => navigateSOC()}
             />
 
         </Dialog.Content>

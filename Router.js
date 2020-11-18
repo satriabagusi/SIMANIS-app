@@ -30,6 +30,12 @@ import TambahUjian from './screen/ujian/ujianonline/TambahUjianOnline';
 import UtsUasOnline from './screen/ujian/utsuasonline/UtsUasOnline';
 import TambahUtsUasOnline from './screen/ujian/utsuasonline/TambahUtsUasOnline';
 
+import TryoutOnline from './screen/ujian/tryoutonline/TryoutOnline';
+import TambahTryout from './screen/ujian/tryoutonline/TambahTryout';
+
+import Soc from './screen/ujian/soc/Soc';
+import TambahSoc from './screen/ujian/soc/TambahSoc';
+
 import LoginScreen from './screen/login/LoginScreen';
 import RegisterScreen from './screen/register/RegisterScreen';
 import MainScreen from './screen/MainScreen';
@@ -169,6 +175,29 @@ function UtsUasScreen(){
   );
 }
 
+const TryoutOnlineStack = createStackNavigator();
+function TryoutOnlineScreen(){
+  return(
+    <TryoutOnlineStack.Navigator
+    screenOptions={{headerShown:false}}>
+      <TryoutOnlineStack.Screen name="TryoutOnline" component={TryoutOnline} />
+      <TryoutOnlineStack.Screen name="TambahTryout" component={TambahTryout} />
+
+    </TryoutOnlineStack.Navigator>
+  );
+}
+
+const SOCStack = createStackNavigator();
+function SOCScreen(){
+  return(
+    <SOCStack.Navigator
+    screenOptions={{headerShown:false}}>
+      <SOCStack.Screen name="Soc" component={Soc} />
+      <SOCStack.Screen name="TambahSoc" component={TambahSoc} />
+    </SOCStack.Navigator>
+  );
+}
+
 const Drawer = createDrawerNavigator();
 function HomeStackScreen(){
   return(
@@ -180,6 +209,8 @@ function HomeStackScreen(){
         <Drawer.Screen name="DataKurikulum" component={DataKurikulumScreen} />
         <Drawer.Screen name="DataUjian" component={DataUjianScreen}/>
         <Drawer.Screen name="UtsUasOnline" component={UtsUasScreen}/>
+        <Drawer.Screen name="TryoutOnline" component={TryoutOnlineScreen} />
+        <Drawer.Screen name="Soc" component={SOCScreen}/>
     </Drawer.Navigator>
   );
 }
