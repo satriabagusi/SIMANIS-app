@@ -29,7 +29,7 @@ const soc = () => {
 
     <Appbar.Header>
       <Appbar.BackAction onPress={() => navigation.navigate('Home', {screen: 'Home'})} />
-      <Appbar.Content title="Try Out Online" />
+      <Appbar.Content title="Students Online Competitions" />
       <Appbar.Action icon="plus" onPress={() =>navigation.navigate('TambahSoc')} />
     </Appbar.Header>
 

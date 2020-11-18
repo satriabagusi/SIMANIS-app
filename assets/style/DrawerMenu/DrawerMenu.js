@@ -51,7 +51,7 @@ export default function DrawerMenu({props}){
                     <DrawerItem
                     style={{marginVertical: responsiveScreenHeight(-0.4)}}        
                     label="Jadwal Pelajaran"
-                    onPress={() => alert("jadwal pelajaran")}
+                    onPress={() => navigation.navigate('DataKurikulum')}
                     />
                     </Drawer.Section>
 
@@ -87,39 +87,26 @@ export default function DrawerMenu({props}){
                         />
                     </Drawer.Section>
                     <Drawer.Section>
-                        <Text style={styles.drawerTitle}>e-Learning</Text>
-                        <DrawerItem
-                            style={{marginVertical: responsiveScreenHeight(-0.4)}}        
-                            label="Bank Soal"
-                            onPress={() => alert("Bank Soal")}
-                        />
-                        <DrawerItem
-                            style={{marginVertical: responsiveScreenHeight(-0.4)}}        
-                            label="Materi Pelajaran"
-                            onPress={() => alert("Materi Pelajaran")}
-                        />
-                    </Drawer.Section>
-                    <Drawer.Section>
                         <Text style={styles.drawerTitle}>Ujian, Tryout, & SOC Online</Text>
                         <DrawerItem
                             style={{marginVertical: responsiveScreenHeight(-0.4)}}        
                             label="Ujian Online"
-                            onPress={() => alert("Ujian Online")}
+                            onPress={() => navigation.navigate('DataUjian')}
                         />
                         <DrawerItem
                             style={{marginVertical: responsiveScreenHeight(-0.4)}}        
                             label="UTS/UAS Online"
-                            onPress={() => alert("UTS/UAS Online")}
+                            onPress={() => navigation.navigate('UTSUASOnline')}
                         />
                         <DrawerItem
                             style={{marginVertical: responsiveScreenHeight(-0.4)}}        
                             label="Tryout Online"
-                            onPress={() => alert("Tryout Online")}
+                            onPress={() => navigation.navigate('TryoutOnline')}
                         />
                         <DrawerItem
                             style={{marginVertical: responsiveScreenHeight(-0.4)}}        
                             label="Students Online Competition"
-                            onPress={() => alert("Students Online Competition")}
+                            onPress={() => navigation.navigate('Soc')}
                         />
                     </Drawer.Section>
 
