@@ -21,8 +21,11 @@ import TambahDataGuru from './screen/datapokok/dataguru/TambahDataGuru';
 import DataSiswa from './screen/datapokok/datasiswa/DataSiswa';
 import TambahDataSiswa from './screen/datapokok/datasiswa/TambahDataSiswa';
 
-import JadwalPelajaran from './screen/datakurikulum/jadwalpelajaran/JadwalPelajaran';
-import TambahDataJadwal from './screen/datakurikulum/jadwalpelajaran/TambahDataJadwal';
+import JadwalPelajaran from './screen/datakurikulum/JadwalPelajaran';
+import TambahDataJadwal from './screen/datakurikulum/TambahDataJadwal';
+
+import AbsensiSiswa from './screen/dataabsensi/AbsensiSiswa';
+import TambahAbsensi from './screen/dataabsensi/TambahAbsensi';
 
 import UjianOnline from './screen/ujian/ujianonline/UjianOnline';
 import TambahUjian from './screen/ujian/ujianonline/TambahUjianOnline';
@@ -152,6 +155,17 @@ function DataKurikulumScreen(){
   );
 }
 
+const DataAbsensi = createStackNavigator();
+function DataAbsensiScreen(){
+  return(
+    <DataAbsensi.Navigator
+    screenOptions={{headerShown:false}}>
+      <DataAbsensi.Screen name="AbsensiSiswa" component={AbsensiSiswa} />
+      <DataAbsensi.Screen name="TambahAbsensi" component={TambahAbsensi} />
+    </DataAbsensi.Navigator>
+  );
+}
+
 const DataUjianOnline = createStackNavigator();
 function DataUjianScreen(){
   return(
@@ -207,6 +221,7 @@ function HomeStackScreen(){
         <Drawer.Screen name="Home" component={HomeScreen}/>
         <Drawer.Screen name="DataPokok" component={DataPokokScreen} />
         <Drawer.Screen name="DataKurikulum" component={DataKurikulumScreen} />
+        <Drawer.Screen name="DataAbsensi" component={DataAbsensiScreen} />
         <Drawer.Screen name="DataUjian" component={DataUjianScreen}/>
         <Drawer.Screen name="UtsUasOnline" component={UtsUasScreen}/>
         <Drawer.Screen name="TryoutOnline" component={TryoutOnlineScreen} />

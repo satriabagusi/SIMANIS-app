@@ -88,7 +88,7 @@ export default function HomeScreen() {
       </View>
       </View>
 
-      <ScrollView showsVerticalScrollIndicator={false} style={{flex:1, alignSelf:'center', width:responsiveScreenWidth(82), top:responsiveScreenHeight(-5), minHeight:200}}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{flex:1, alignSelf:'center', width:responsiveScreenWidth(82), minHeight:180}}>
 
         <View style={{paddingHorizontal:2}}>
         <TouchableOpacity
@@ -111,7 +111,7 @@ export default function HomeScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity
-          onPress={() => alert("Absensi Siswa")} >
+          onPress={() => navigation.navigate('DataAbsensi')} >
             <Surface style={{borderRadius:10 ,elevation: 4, alignItems: 'center', justifyContent:'center', height: responsiveScreenHeight(12), width:responsiveScreenWidth(24)}}>
               <Image source={require('../../assets/icons/absensiIcon.png')} style={{width: responsiveScreenWidth(9.8), height: responsiveScreenHeight(4)}}/>
               <Text style={{fontFamily: 'Poppins_400Regular', textAlign:'center', fontSize:responsiveScreenFontSize(1.5)}}>Absensi Siswa</Text>
