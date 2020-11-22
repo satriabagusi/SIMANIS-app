@@ -30,7 +30,8 @@ const App = () => {
       text: '#001021',
       error: '#F05252',
       disabled: '#BEC6C6',
-      
+      warning: '#FACA15',
+      success: '#31C48D'
 
     }
   }

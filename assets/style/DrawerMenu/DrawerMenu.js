@@ -60,7 +60,7 @@ export default function DrawerMenu({props}){
                         <DrawerItem
                             style={{marginVertical: responsiveScreenHeight(-0.4)}}        
                             label="Absensi Siswa"
-                            onPress={() => alert("Absensi Siswa")}
+                            onPress={() => navigation.navigate('DataAbsensi')}
                         />
                     </Drawer.Section>
                     
@@ -69,7 +69,7 @@ export default function DrawerMenu({props}){
                         <DrawerItem
                             style={{marginVertical: responsiveScreenHeight(-0.4)}}        
                             label="Tugas siswa"
-                            onPress={() => alert("Tugas siswa")}
+                            onPress={() => navigation.navigate('TugasSiswa')}
                         />
                     </Drawer.Section>
 
@@ -108,6 +108,19 @@ export default function DrawerMenu({props}){
                             label="Students Online Competition"
                             onPress={() => navigation.navigate('Soc')}
                         />
+                    </Drawer.Section>
+                    <Drawer.Section>
+                    <Text style={styles.drawerTitle}>Pengguna</Text>
+                        <DrawerItem
+                                style={{marginVertical: responsiveScreenHeight(-0.4)}}        
+                                label="Profil Pengguna"
+                                onPress={() => navigation.navigate('UserProfile')}
+                            />
+                        <DrawerItem
+                                style={{marginVertical: responsiveScreenHeight(-0.4)}}        
+                                label="Ganti Password"
+                                onPress={() => navigation.navigate('UserProfile', {screen:'EditPassword'})}
+                            />
                     </Drawer.Section>
 
                 </View>

@@ -27,7 +27,7 @@ export function DrawerContent({props, navigation}){
                 </View>
                     <View style={styles.userInfoBtn}>
                         <TouchableOpacity style={styles.profilBtn}
-                        onPress={() => alert('profil pengguna')}>
+                        onPress={() => navigation.navigate('UserProfile')}>
                             <Ionicons name="ios-person" size={responsiveScreenWidth(6)} color="#3F83F8"/>
                             <Text style={{color: '#3F83F8', textAlign:'center', marginLeft:responsiveScreenWidth(2)}}>Profil Pengguna</Text>
                         </TouchableOpacity>

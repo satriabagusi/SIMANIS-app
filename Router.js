@@ -27,6 +27,9 @@ import TambahDataJadwal from './screen/datakurikulum/TambahDataJadwal';
 import AbsensiSiswa from './screen/dataabsensi/AbsensiSiswa';
 import TambahAbsensi from './screen/dataabsensi/TambahAbsensi';
 
+import TugasSiswa from './screen/tugassiswa/TugasSiswa';
+import TambahTugas from './screen/tugassiswa/TambahTugas';
+
 import UjianOnline from './screen/ujian/ujianonline/UjianOnline';
 import TambahUjian from './screen/ujian/ujianonline/TambahUjianOnline';
 
@@ -38,6 +41,9 @@ import TambahTryout from './screen/ujian/tryoutonline/TambahTryout';
 
 import Soc from './screen/ujian/soc/Soc';
 import TambahSoc from './screen/ujian/soc/TambahSoc';
+
+import UserProfile from './screen/userprofile/UserProfile';
+import EditPassword from './screen/userprofile/EditPassword';
 
 import LoginScreen from './screen/login/LoginScreen';
 import RegisterScreen from './screen/register/RegisterScreen';
@@ -166,6 +172,17 @@ function DataAbsensiScreen(){
   );
 }
 
+const DataTugas = createStackNavigator();
+function DataTugasScreen(){
+  return(
+    <DataTugas.Navigator
+    screenOptions={{headerShown:false}}>
+      <DataTugas.Screen name="TugasSiswa" component={TugasSiswa}/>
+      <DataTugas.Screen name="TambahTugas" component={TambahTugas}/>
+    </DataTugas.Navigator>
+  );
+}
+
 const DataUjianOnline = createStackNavigator();
 function DataUjianScreen(){
   return(
@@ -212,6 +229,17 @@ function SOCScreen(){
   );
 }
 
+const UserProfileStack = createStackNavigator();
+function UserProfileScreen(){
+  return(
+    <UserProfileStack.Navigator
+    screenOptions={{headerShown:false}}>
+      <UserProfileStack.Screen name="UserProfile" component={UserProfile}/>
+      <UserProfileStack.Screen name="EditPassword" component={EditPassword}/>
+    </UserProfileStack.Navigator>
+  )
+}
+
 const Drawer = createDrawerNavigator();
 function HomeStackScreen(){
   return(
@@ -222,10 +250,12 @@ function HomeStackScreen(){
         <Drawer.Screen name="DataPokok" component={DataPokokScreen} />
         <Drawer.Screen name="DataKurikulum" component={DataKurikulumScreen} />
         <Drawer.Screen name="DataAbsensi" component={DataAbsensiScreen} />
+        <Drawer.Screen name="TugasSiswa" component={DataTugasScreen}/>
         <Drawer.Screen name="DataUjian" component={DataUjianScreen}/>
         <Drawer.Screen name="UtsUasOnline" component={UtsUasScreen}/>
         <Drawer.Screen name="TryoutOnline" component={TryoutOnlineScreen} />
         <Drawer.Screen name="Soc" component={SOCScreen}/>
+        <Drawer.Screen name="UserProfile" component={UserProfileScreen}/>
     </Drawer.Navigator>
   );
 }

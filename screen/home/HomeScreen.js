@@ -119,7 +119,7 @@ export default function HomeScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity
-          onPress={() => alert("Tugas Siswa")} >
+          onPress={() => navigation.navigate('TugasSiswa')} >
             <Surface style={{borderRadius:10 ,elevation: 4, alignItems: 'center', justifyContent:'center', height: responsiveScreenHeight(12), width:responsiveScreenWidth(24)}}>
               <Image source={require('../../assets/icons/tugasIcon.png')} style={{width: responsiveScreenWidth(6), height: responsiveScreenHeight(5)}}/>
               <Text style={{fontFamily: 'Poppins_400Regular', textAlign:'center', fontSize:responsiveScreenFontSize(1.5)}}>Tugas Siswa</Text>
