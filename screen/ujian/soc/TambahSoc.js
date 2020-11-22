@@ -99,12 +99,12 @@ const TambahSoc = () => {
     <View>
     <Text style={{fontFamily:'Poppins_400Regular', left:5, top:10,bottom:10, color:'black'}}>Ruang Lingkup</Text>
     <Picker mode="dialog" 
-            onValueChange={(itemValue) => setRuangLingkupUtsUas(itemValue)}
-            selectedValue={ruangLingkupUtsUas}>
-                <Picker.Item label="Sekolah" value="Sekolah"  />
-                <Picker.Item label="Kecamatan" value="Kecamatan"  />
-                <Picker.Item label="Kabupaten" value="Kabupaten"  />
-            </Picker>
+    onValueChange={(itemValue) => setRuangLingkupUtsUas(itemValue)}
+    selectedValue={ruangLingkupUtsUas}>
+        <Picker.Item label="Sekolah" value="Sekolah"  />
+        <Picker.Item label="Kecamatan" value="Kecamatan"  />
+        <Picker.Item label="Kabupaten" value="Kabupaten"  />
+    </Picker>
     </View>
 
 

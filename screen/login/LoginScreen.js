@@ -8,9 +8,12 @@ import { Button, Headline, TextInput, useTheme } from 'react-native-paper';
 import { responsiveFontSize, responsiveHeight, responsiveScreenHeight, responsiveScreenWidth, responsiveWidth } from 'react-native-responsive-dimensions';
 
 import Icons from '@expo/vector-icons/Ionicons';
+import { Picker } from '@react-native-picker/picker';
 
 const LoginScreen = ({navigation}) => {
   const theme = useTheme();
+  const [loginAs, setLoginAs] = React.useState('');
+
   return(
     
 
@@ -56,6 +59,17 @@ const LoginScreen = ({navigation}) => {
             label="Password"
             secureTextEntry={true}
             />
+            <View style={{marginTop:10}}>
+            <Text>Login Sebagai :</Text>
+            <Picker mode="dialog" 
+            onValueChange={(itemValue) => setLoginAs(itemValue)}
+            selectedValue={loginAs}>
+                <Picker.Item label="Dinas Pendidikan" value="Dinas Pendidikan"  />
+                <Picker.Item label="Admin Sekolah" value="Admin Sekolah"  />
+                <Picker.Item label="Guru" value="Guru"  />
+                <Picker.Item label="Siswa" value="Siswa"  />
+            </Picker>
+            </View>
             <Button style={{marginTop:responsiveHeight(1)}} mode="contained" onPress={() => navigation.navigate('Home')}>Login</Button>
           </View>
 
