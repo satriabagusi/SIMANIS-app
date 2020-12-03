@@ -5,6 +5,13 @@ import { Appbar, Button, Card, DataTable, Divider, Menu, Text, TextInput, useThe
 import { responsiveScreenHeight, responsiveScreenWidth } from 'react-native-responsive-dimensions';
 import {MaterialCommunityIcons as Icons} from '@expo/vector-icons';
 
+<<<<<<< HEAD
+=======
+// import DataSekolah from './component/DataSekolah';
+// import DataKelas from './component/DataKelas';
+// import DataDiri from './component/DataDiri';
+// import DetailUser from './component/DetailUser';
+>>>>>>> 7dde32be9a8ab1b10390e96a9f06ee61da2276b4
 import { Picker } from '@react-native-picker/picker';
 
 const TambahDataRombel = () => {

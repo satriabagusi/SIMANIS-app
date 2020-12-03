@@ -6,31 +6,38 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { Button, Headline, TextInput, useTheme } from 'react-native-paper';
 import { responsiveFontSize, responsiveHeight, responsiveScreenHeight, responsiveScreenWidth, responsiveWidth } from 'react-native-responsive-dimensions';
-
 import Icons from '@expo/vector-icons/Ionicons';
 import { Picker } from '@react-native-picker/picker';
+import Dropdown from '../../assets/components/dropdown'
+
+const options = [
+  { value:'Admin Sekolah', label:'Admin Sekolah' },
+  { value:'Guru', label:'Guru' },
+  { value:'Siswa', label:'Siswa' }
+]
+
+const onViewBySelected = (viewBy) => {
+  console.log(viewBy);
+}
 
 const LoginScreen = ({navigation}) => {
   const theme = useTheme();
   const [loginAs, setLoginAs] = React.useState('');
-
   return(
-    
+        <KeyboardAvoidingView
+          enabled={false}
+              behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+              style={{flex:1}}>
 
-<KeyboardAvoidingView
-  enabled={false}
-      behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
-      style={{flex:1}}>
-
-<StatusBar style={"light"}/>
-    <Image
-    source={require('../../assets/fluid-bg.png')}
-  //   style={styles.fluid}
-  style={{position:'absolute',
-  justifyContent: "center",
-  top:-350,
-  zIndex:-99,}}
-    />
+        <StatusBar style={"light"}/>
+            <Image
+            source={require('../../assets/fluid-bg.png')}
+          //   style={styles.fluid}
+          style={{position:'absolute',
+          justifyContent: "center",
+          top:-350,
+          zIndex:-99,}}
+            />
         <View style={{padding: 24, flex: 1, justifyContent: "space-around"}}>
           <View style={{flex:1, flexDirection:'row', alignContent:'center', top:responsiveHeight(4)}}>
             <TouchableOpacity onPress={() => navigation.popToTop()}>
@@ -61,22 +68,15 @@ const LoginScreen = ({navigation}) => {
             />
             <View style={{marginTop:10}}>
             <Text>Login Sebagai :</Text>
-            <Picker mode="dialog" 
-            onValueChange={(itemValue) => setLoginAs(itemValue)}
-            selectedValue={loginAs}>
-                <Picker.Item label="Dinas Pendidikan" value="Dinas Pendidikan"  />
-                <Picker.Item label="Admin Sekolah" value="Admin Sekolah"  />
-                <Picker.Item label="Guru" value="Guru"  />
-                <Picker.Item label="Siswa" value="Siswa"  />
-            </Picker>
+            <View style={{marginVertical: 20}}>
+              <Dropdown defaultValue={'Admin Sekolah'} options={options} onDropdownSelected={(viewBy) => onViewBySelected(viewBy)} />
+            </View>
             </View>
             <Button style={{marginTop:responsiveHeight(1)}} mode="contained" onPress={() => navigation.navigate('Home')}>Login</Button>
           </View>
 
         </View>
     </KeyboardAvoidingView>
-
-
   );
 }
 
