@@ -5,10 +5,6 @@ import { Appbar, Button, Card, DataTable, Divider, Menu, Text, TextInput, useThe
 import { responsiveScreenHeight, responsiveScreenWidth } from 'react-native-responsive-dimensions';
 import {MaterialCommunityIcons as Icons} from '@expo/vector-icons';
 
-import DataSekolah from './component/DataSekolah';
-import DataKelas from './component/DataKelas';
-import DataDiri from './component/DataDiri';
-import DetailUser from './component/DetailUser';
 import { Picker } from '@react-native-picker/picker';
 
 const TambahDataRombel = () => {
@@ -161,7 +157,7 @@ const TambahDataRombel = () => {
             <View>
                 <Text style={{fontFamily:'Poppins_400Regular', left:5, top:10,bottom:10, color:'black'}}>Jenis Kelamin</Text>
                 <Picker mode="dialog" 
-                onValueChange={(itemValue) => setKecamatan(itemValue)}
+                onValueChange={(itemValue) => setKelamin(itemValue)}
                 selectedValue={kelamin}>
                     <Picker.Item label="Laki-laki" value="Laki-laki"  />
                     <Picker.Item label="Perempuan" value="Perempuan"  />
